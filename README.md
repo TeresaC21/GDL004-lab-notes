@@ -14,7 +14,7 @@
     - [Primeros pasos](#primeros-pasos)
     - [Otros recursos](#otros-recursos)
 
-## Preámbulo
+## Preámbulo p
 
 [React](https://reactjs.org/), [Angular](https://angular.io/) y [Vue](https://vuejs.org/)
 son algunos de los _frameworks_ y _librerías_ de JavaScript más utilizados por
