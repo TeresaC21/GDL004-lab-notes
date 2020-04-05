@@ -7,14 +7,13 @@ import Notes from './components/notes/Notes';
 
 function App() {
   return (
-  /*  <Router>
+    <Router>
      <Switch>
        <Route exact path="/" component={Login} />
        <Route exact path="/register" component={Register} />
        <Route exact path="/notes" component={Notes} />
      </Switch>
-   </Router> */
-   <Login />
+    </Router>
   );
 }
 
