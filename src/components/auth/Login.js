@@ -38,7 +38,7 @@ const onSubmit = e => {
                 <form
                   onSubmit={onSubmit}
                 >
-                  <h4 className="mt0 mb3">Log in</h4>
+                  <h4 className="mt0 mb3 textColorLogo">Log in</h4>
                   <div className="grey-text">
                   <div className="input-field col s12">
                     <input

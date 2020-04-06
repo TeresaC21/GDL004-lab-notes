@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
-
 const Sidenav = () => {
     return ( 
-        <aside>
-            <h1>sidebar</h1>
+<aside>
+<ul className="collection mt0 mb0">
+  <a href="#!" className="collection-item textOrange">New Note</a>
+  <a href="#!" className="collection-item textOrange">Favorites</a>
+  <a href="#!" className="collection-item textOrange">Show All</a>
+  <a href="#!" className="collection-item textOrange">Papelera</a>
+</ul>
 
-        </aside>
+ </aside>
+
      );
 }
  

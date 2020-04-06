@@ -44,7 +44,7 @@ const Register = () => {
                 <form
                   onSubmit={onSubmit}
                 >
-                  <h4 className="mt0 mb3">Register</h4>
+                  <h4 className="mt0 mb3 textColorLogo">Register</h4>
                   <div className="grey-text">
                   <div className="input-field col s12">
                     <input
@@ -96,7 +96,7 @@ const Register = () => {
                   className="btn waves-effect waves-light deep-orange"
                   type="submit"
                   name="action"
-                  >Register
+                  >Sign up
                   </button>
                   </div>
                 </form>
