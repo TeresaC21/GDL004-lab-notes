@@ -9,7 +9,7 @@ import Home from './components/user/Home';
 
 function App() {
   return (
-    <Router>
+    <Router basename={window.location.pathname || ''}>
      <Switch>
        <Route exact path="/" component={Login} />
        <Route exact path="/register" component={Register} />
