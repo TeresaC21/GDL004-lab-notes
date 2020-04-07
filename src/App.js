@@ -5,7 +5,7 @@ import Register from './components/auth/Register';
 /* import Notes from './components/notes/Notes';
 import Navbar from './components/notes/Navbar';
 import Sidenav from './components/notes/Sidenav'; */
-import Home from './components/Home';
+import Home from './components/user/Home';
 
 function App() {
   return (
