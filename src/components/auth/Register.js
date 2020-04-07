@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const Register = () => {
     const [user, setSaveUser] = useState({
@@ -8,8 +9,9 @@ const Register = () => {
         password: '',
         confirmPassword: ''
       })
-      const { name, email, password, confirmPassword } = user
       
+      const [error, setError] = useState(false)
+
       // Take values email and password of input
       const onChangeInput = e => {
         setSaveUser({
@@ -17,12 +19,23 @@ const Register = () => {
           [e.target.name] : e.target.value
         })
       }
+      const { name, email, password, confirmPassword } = user
       
       // Click user
       const onSubmit = e => {
         e.preventDefault();
       
         // Validate not empty inputs
+        if(name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '' ){
+          setError(true)
+          return;
+        }
+        // Delete mesage error
+        setError(false)
+
+        // I THINK ------ ID HERE PUT ID FIREBASE 
+          user.id = uuidv4();
+          //console.log(user);
       
         // Password min of six caracters
 
@@ -41,6 +54,10 @@ const Register = () => {
           <div className="col s12 m8 offset-m2 xl6 offset-xl3">
             <div className="card center-align opacity-tc" >
               <div className="card-content">
+
+              {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">All fields are required</p>
+              : null}
+
                 <form
                   onSubmit={onSubmit}
                 >
@@ -55,7 +72,7 @@ const Register = () => {
                     value={name}
                     onChange={onChangeInput}
                     />
-                    <label for="text">Name</label>
+                    <label htmlFor="text">Name</label>
                   </div>
                   <div className="input-field col s12">
                     <input
@@ -66,7 +83,7 @@ const Register = () => {
                     value={email}
                     onChange={onChangeInput}
                     />
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                   </div>
                   <div className="input-field col s12">
                     <input
@@ -77,7 +94,7 @@ const Register = () => {
                     value={password}
                     onChange={onChangeInput}
                     />
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
                   <div className="input-field col s12">
                     <input
@@ -88,7 +105,7 @@ const Register = () => {
                     value={confirmPassword}
                     onChange={onChangeInput}
                     />
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
                   </div>
                   </div>
                   <div className="text-center">

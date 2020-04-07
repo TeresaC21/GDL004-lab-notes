@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Notesinput = () => {
 
@@ -6,7 +7,7 @@ const Notesinput = () => {
     const [newNote, setNewNote] = useState({
       note: ''
     })
-    const {note} = newNote; // extract name of project
+    const [error, setError] = useState(false)
   
     // Read content the input
     const onChangeNote = e => {
@@ -15,36 +16,50 @@ const Notesinput = () => {
         [e.target.name] : e.target.value
       })
     }
+    const {note} = newNote; // extract name of project
   
     // When user save note
-    const onSubmitNote = e => {
-      e.preventDefault();
-  
-      // validate note
-  
+  const onSubmitNote = e => {
+    e.preventDefault();
+
+    // validate note
+    if(note.trim() === ''){
+      setError(true);
+      return;
+    }
+    // Delete mesage error
+    setError(false)
+
+    // I THINK ------ ID HERE PUT ID FIREBASE 
+    newNote.id = uuidv4();
+    //console.log(user);
+
       //add the state
   
       // reload the form
-  
     }
   
       return (
     /*  <div className="row">
       <div className="col s12 m6 mt4"> */
-        <div id="modalNote" className="card opacity-tc modal">
+        <div id="modalNote" className="card backgroundModal modal">
         <span className="card-title textColorLogo">New Note</span>
           <div className="card-image">
           <a 
-          className="btn-floating halfway-fab waves-effect waves-light red mb1"><i 
-          className="material-icons">edit</i></a>
+          className="btn-floating halfway-fab waves-effect waves-light red mb1">
+            <i className="material-icons">edit</i></a>
            {/*  <img src="images/sample-1.jpg" /> */}
           </div>
           <div className="card-content textColorLogo"> 
+
+          {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
+              : null}
+
               <form 
               onSubmit={onSubmitNote}
               >
               <textarea
-              className="materialize-textarea"
+              className="materialize-textarea textColorLogo"
               data-length="120"
               name="note"
               value={note}

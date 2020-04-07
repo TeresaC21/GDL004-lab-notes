@@ -30,8 +30,14 @@ width: 100vw;
 .backgroundCollection{
   background: rgba(0, 0, 5, 0.274) !important;
 }
+.backgroundModal{
+  background: rgba(5, 2, 0, 0.856) !important;
+}
 .opacity-tc {
   background-color: rgba(0, 0, 0, 0.493);
+}
+.backgrounOpacity{
+  background: rgba(226, 0, 0, 0.130) !important;
 }
 .tc-side{
   /* background: #0A0908;  */
@@ -113,7 +119,7 @@ form i.active, label.active {
   margin-bottom: 2rem;
 }
 .mb3 {
-  margin-bottom: 3rem;
+  margin-bottom: 3rem !important;
 }
 .mb4 {
   margin-bottom: 4rem;

@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+
 const Notes = ({createNote}) => {
 
+  // ************** New Notes that add the COMPONENT ListNote ***************
   // State for project
   const [newNote, setNewNote] = useState({
     note: ''
   })
-  const {note} = newNote; // extract name of project
-
+  const [error, setError] = useState(false)
   // Read content the input
   const onChangeNote = e => {
     setNewNote({
@@ -15,7 +17,7 @@ const Notes = ({createNote}) => {
       [e.target.name] : e.target.value
     })
   }
-  const [error, setError] = useState(false)
+  const {note} = newNote; // extract name of project
 
   // When user save note
   const onSubmitNote = e => {
@@ -26,15 +28,20 @@ const Notes = ({createNote}) => {
       setError(true);
       return;
     }
+    // Delete mesage error
+      setError(false)
 
-    //add the state
+    // I THINK ------ ID HERE PUT ID FIREBASE 
+    newNote.id = uuidv4();
+    //console.log(user);
 
-    // reload the form
-
-    // ID
-  newNote.id = uuidv4();
     
   // Create note
+
+  //add the state
+
+   // reload the form
+
 
   }
     return (
@@ -44,11 +51,15 @@ const Notes = ({createNote}) => {
       <span className="card-title textColorLogo">Card Title</span>
         <div className="card-image">
         <a 
-        className="btn-floating halfway-fab waves-effect waves-light red mb1"><i 
-        className="material-icons">edit</i></a>
+        className="btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"><i 
+        className="material-icons">add_circle</i></a>
          {/*  <img src="images/sample-1.jpg" /> */}
         </div>
         <div className="card-content textColorLogo">
+
+        {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
+              : null}
+
             <form 
             onSubmit={onSubmitNote} 
             >
@@ -58,16 +69,16 @@ const Notes = ({createNote}) => {
             value={note}
             onChange={onChangeNote}
             />
-            <button
+            {/* <button
               className="btn waves-effect waves-light deep-orange"
               type="submit"
               name="action"
               >Save
-            </button>
+            </button> */}
             </form>
         </div>
         <div className="card-action">
-          <a href="#" className="textColorsBar ml80">Delete</a>
+          <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
         </div>
       </div>
      </div>
