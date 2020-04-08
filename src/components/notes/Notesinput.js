@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const Notesinput = () => {
+const Notesinput = ({createNote}) => {
 
     // State for project
     const [newNote, setNewNote] = useState({
@@ -27,16 +27,23 @@ const Notesinput = () => {
       setError(true);
       return;
     }
+    
     // Delete mesage error
     setError(false)
 
     // I THINK ------ ID HERE PUT ID FIREBASE 
     newNote.id = uuidv4();
-    //console.log(user);
+    //console.log(note);
+
+    // Create note in COMPONENT Listnote
+    createNote(newNote); 
 
       //add the state
   
       // reload the form
+       setNewNote({
+          note: ''
+      }) 
     }
   
       return (

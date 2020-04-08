@@ -2,11 +2,37 @@ import React, {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const Notes = ({createNote}) => {
+const Notes = ({note}) => {
+
+  return (
+   <div className="row">
+    <div className="col s12 m6 "> 
+      <div className="card opacity-tc">
+      <span className="card-title textColorLogo">Card Title</span>
+        <div className="card-image">
+        <a 
+        className="btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"><i 
+        className="material-icons">add_circle</i></a>
+         {/*  <img src="images/sample-1.jpg" /> */}
+        </div>
+            <div className="card-content textColorLogo">
+                <p>NOTE: {note.note}</p>
+            </div>
+        <div className="card-action">
+          <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
+        </div>
+      </div>
+     </div>
+  </div> 
+    );
+}
+ 
+export default Notes;
+
 
   // ************** New Notes that add the COMPONENT ListNote ***************
   // State for project
-  const [newNote, setNewNote] = useState({
+/*   const [newNote, setNewNote] = useState({
     note: ''
   })
   const [error, setError] = useState(false)
@@ -43,21 +69,9 @@ const Notes = ({createNote}) => {
    // reload the form
 
 
-  }
-    return (
-   <div className="row">
-    <div className="col s12 m6 "> 
-      <div className="card opacity-tc">
-      <span className="card-title textColorLogo">Card Title</span>
-        <div className="card-image">
-        <a 
-        className="btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"><i 
-        className="material-icons">add_circle</i></a>
-         {/*  <img src="images/sample-1.jpg" /> */}
-        </div>
-        <div className="card-content textColorLogo">
+  } */
 
-        {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
+{/* {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
               : null}
 
             <form 
@@ -69,22 +83,10 @@ const Notes = ({createNote}) => {
             value={note}
             onChange={onChangeNote}
             />
-            {/* <button
+            <button
               className="btn waves-effect waves-light deep-orange"
               type="submit"
               name="action"
               >Save
-            </button> */}
-            </form>
-        </div>
-        <div className="card-action">
-          <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
-        </div>
-      </div>
-     </div>
-  </div> 
-    );
-}
- 
-export default Notes;
-
+            </button> 
+            </form> */}

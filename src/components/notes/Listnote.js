@@ -1,27 +1,43 @@
-import React, { Fragment } from 'react';
-import Notes from './Notes'
+import React, { Fragment, useState } from 'react';
+import Notes from './Notes' // I still dont not it can be notes or notesinput
+import Notesinput from './Notesinput'
 
 const Listnote = () => {
-    const notes = [{
-    note: '', status: true
-}];
+   
+// List of notes
+const [notes, setNotes] = useState([])
 
+// Function take notes actually and add the new
+const createNote = note => {
+   setNotes([
+       ...notes,  note
+   ])   
+}
     return (
     <Fragment>
-        <h4>List notes</h4>
         <ul> 
-        {notes.length === 0
-            ? (<li><h5>Notes Empty</h5></li>)
-            : notes.map(note =>(        
+               <Notesinput
+                createNote={createNote}
+                />
+        </ul>
+        <div>
+            <h3>LIST NOTES</h3>
+            {notes.map(note => (
                 <Notes
-                key="1"
+                key={note.id}
                 note={note}
                 />
-                ))
-        }
-        </ul>
+            ))}
+        </div>
     </Fragment>
     );
 }
  
 export default Listnote;
+
+/*  const notes = [{
+    note: '', status: true
+}]; */
+/* {notes.length === 0
+    ? (<li><h5>Notes Empty</h5></li>)
+    : notes.map(note =>()) } */

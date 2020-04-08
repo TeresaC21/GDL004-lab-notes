@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Navbar from './Navbar';
 import Sidenav from './Sidenav';
 import Listnote from '../notes/Listnote';
 import Notesinput from '../notes/Notesinput';
 
 const Home = () => {
-  const newLocal = (<div>
+  
+  return(
+    
+  <div>
     <Navbar />
     <div className="row backgroundColorsHome">
       <div>
@@ -13,13 +16,13 @@ const Home = () => {
           <Sidenav /> 
         </div>
         <div className="col s9 m8 l10">
-          <Notesinput />
-          <Listnote />
+         {/*  <Notesinput /> */}
+           <Listnote /> 
         </div>
       </div>
     </div>
   </div>);
-    return newLocal;
+ 
 }
  
 export default Home;
