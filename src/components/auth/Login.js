@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import { Link, Redirect } from 'react-router-dom';
+/* import { v4 as uuidv4 } from 'uuid'; */
 import Header from '../Header';
+import { loginFB } from './helper-firebaseAuth'
 
 const Login = () => {
   // State from value email and password
@@ -12,9 +13,6 @@ const Login = () => {
 
   // State from not empty inputs
   const [error, setError] = useState(false);
-
-  //State from Enter de user at home
-  const [userEnter, setUserEnter] = useState(false)
 
   // Take values email and password of input
   const onChangeInput = (e) => {
@@ -37,11 +35,15 @@ const Login = () => {
     setError(false);
 
     // I THINK ------ ID HERE PUT ID FIREBASE
-    user.id = uuidv4();
+   /*  user.id = uuidv4(); */
     //console.log(user);
 
+    loginFB(user);
+   console.log(loginFB(user));
+   
     // Run action
   };
+
   return (
     <Fragment>
       <div className="backgroundForms">

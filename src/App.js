@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -16,7 +16,7 @@ function App() {
      <Switch>
        <Route exact path="/" component={Login} />
        <Route exact path="/register" component={Register} />
-       <PrivateRoute exact path="/home" component={Home} />
+       <Route exact path="/home" component={Home} />
        <Route render={()=> <Notfound />} /> 
      </Switch>
     </Router>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
 import { v4 as uuidv4 } from 'uuid';
+import { registerFB } from './helper-firebaseAuth'
 
 const Register = () => {
   const [user, setSaveUser] = useState({
@@ -39,8 +40,11 @@ const Register = () => {
     // Delete mesage error
     setError(false);
 
+    // import function Firebase for register
+    registerFB(user);
+
     // I THINK ------ ID HERE PUT ID FIREBASE
-    user.id = uuidv4();
+/*     user.id = uuidv4(); */
     //console.log(user);
 
     // Password min of six caracters

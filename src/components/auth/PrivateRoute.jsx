@@ -4,6 +4,7 @@ import { AuthContext } from './Auth'; /* const que = React.creteContext */
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     const {currentUser} = useContext(AuthContext);
+    
     return ( 
         <Route
             {...rest}

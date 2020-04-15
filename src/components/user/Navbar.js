@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Sidenav from './Sidenav';
- import firebaseIn from '../auth/firebase'; 
+import { logout } from '../auth/helper-firebaseAuth';
 
 const Navbar = () => {
 
@@ -14,11 +14,11 @@ const Navbar = () => {
       </a>
       <ul className="right hide-on-med-and-down">
         <li><a href="#"><i className="material-icons textColorLogo">search</i></a></li>
-        <li><a href="#" onClick={() => firebaseIn.auth().signOut()}  ><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
+        <li><a href="#" onClick={logout()} ><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
       </ul>
     </div>
   </nav>
-
+ {/*  onClick={() => firebaseIn.auth().signOut()}  */}
                         {/* Here bar responsive */}
   <ul className="sidenav backgroundBurger barWidth" id="menuResponsive">
     <Sidenav />
