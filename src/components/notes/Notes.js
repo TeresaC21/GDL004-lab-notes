@@ -1,31 +1,38 @@
 import React, {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Listnote from './Listnote';
 
 
-const Notes = ({note}) => {
-
+const Notes = ({ note }) => {
+  
   return (
-   <div className="row">
-    <div className="col s12 m6 "> 
-      <div className="card opacity-tc">
-      <span className="card-title textColorLogo">Card Title</span>
-        <div className="card-image">
-        <a 
-        className="btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"><i 
-        className="material-icons">add_circle</i></a>
-         {/*  <img src="images/sample-1.jpg" /> */}
-        </div>
-            <div className="card-content textColorLogo">
-                <p>NOTE: {note.note}</p>
-            </div>
-        <div className="card-action">
-          <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
+    <div className="row">
+      <div className="col s12 m6 ">
+        <div className="card opacity-tc">
+          <span className="card-title textNote">Note</span>
+
+          <div className="card-image">
+            <a
+              className="collection-item modal-trigger btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"
+              href="#modalNote"
+            >
+              <i className="material-icons">add_circle</i>
+            </a>
+            {/*  <img src="images/sample-1.jpg" /> */}
+          </div>
+
+          <div className="card-content textNote">
+            <p>{note.note}</p>
+          </div>
+
+          <div className="card-action">
+            <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
+          </div>
         </div>
       </div>
-     </div>
-  </div> 
-    );
-}
+    </div>
+  );
+};
  
 export default Notes;
 

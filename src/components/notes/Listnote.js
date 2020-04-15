@@ -3,35 +3,32 @@ import Notes from './Notes' // I still dont not it can be notes or notesinput
 import Notesinput from './Notesinput'
 
 const Listnote = () => {
-   
-// List of notes
-const [notes, setNotes] = useState([])
+  // List of notes
+  const [notes, setNotes] = useState([]);
 
-// Function take notes actually and add the new
-const createNote = note => {
-   setNotes([
-       ...notes,  note
-   ])   
-}
-    return (
+  // Function take notes actually and add the new
+  const createNote = (note) => {
+    setNotes([...notes, note]);
+  };
+  return (
     <Fragment>
-        <ul> 
-               <Notesinput
-                createNote={createNote}
-                />
-        </ul>
-        <div>
-            <h3>LIST NOTES</h3>
-            {notes.map(note => (
-                <Notes
-                key={note.id}
-                note={note}
-                />
-            ))}
-        </div>
+      <ul>
+        <Notesinput 
+        createNote={createNote} 
+        />
+      </ul>
+      <div>
+        <h5 className="textPurple mlL">LIST NOTES</h5>
+        {notes.map((note) => (
+          <Notes
+           key={note.id} 
+           note={note} 
+           />
+        ))}
+      </div>
     </Fragment>
-    );
-}
+  );
+};
  
 export default Listnote;
 
