@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import Sidenav from './Sidenav';
 import Listnote from '../notes/Listnote';
 
 
 const Home = () => {
+  
   return (
     <div>
       <Navbar />

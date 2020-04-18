@@ -12,6 +12,5 @@ import "firebase/auth";
   };
   // Initialize Firebase
   const firebaseIn = firebase.initializeApp(firebaseConfig);
-  console.log(firebaseIn);
   
 export default firebaseIn;

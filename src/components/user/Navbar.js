@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Sidenav from './Sidenav';
-import { logout } from '../auth/helper-firebaseAuth';
+import { logout } from '../firebase/helper-firebaseAuth';
 
 const Navbar = () => {
 
@@ -12,9 +12,10 @@ const Navbar = () => {
       <a href="#" data-target="menuResponsive" className="sidenav-trigger">
         <i className="material-icons">menu</i>
       </a>
+  
       <ul className="right hide-on-med-and-down">
         <li><a href="#"><i className="material-icons textColorLogo">search</i></a></li>
-        <li><a href="#" onClick={logout()} ><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
+        <li><a href="#" onClick={logout()}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
       </ul>
     </div>
   </nav>

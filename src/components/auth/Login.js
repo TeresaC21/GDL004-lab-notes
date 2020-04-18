@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 /* import { v4 as uuidv4 } from 'uuid'; */
-import Header from '../Header';
-import { loginFB } from './helper-firebaseAuth'
+import Header from '../layout/Header';
+import { loginFB } from '../firebase/helper-firebaseAuth'
 
 const Login = () => {
   // State from value email and password
@@ -22,6 +22,9 @@ const Login = () => {
     });
   };
   const { email, password } = user;
+
+ 
+
   // Click user
   const onSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ const Login = () => {
     //console.log(user);
 
     loginFB(user);
-   console.log(loginFB(user));
+   
    
     // Run action
   };

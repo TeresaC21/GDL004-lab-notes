@@ -39,9 +39,8 @@ const Sidenav = () => {
 }
  
 export default Sidenav;
-
- {/* MODAL MATERIALIZE */}
-         {/*  <div id="modal1" className="modal">
+ 
+         /*  <div id="modal1" className="modal">
             <div className="modal-content">
               <h4>Modal Header</h4>
               <p>A bunch of text</p>
@@ -54,4 +53,4 @@ export default Sidenav;
                 Agree
               </a>
             </div>
-          </div> */}
+          </div> */

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../Header';
-import { v4 as uuidv4 } from 'uuid';
-import { registerFB } from './helper-firebaseAuth'
+import Header from '../layout/Header';
+/* import { v4 as uuidv4 } from 'uuid'; */
+import { registerFB } from '../firebase/helper-firebaseAuth'
 
 const Register = () => {
   const [user, setSaveUser] = useState({
@@ -26,7 +26,6 @@ const Register = () => {
   // Click user
   const onSubmit = (e) => {
     e.preventDefault();
-
     // Validate not empty inputs
     if (
       name.trim() === "" ||
