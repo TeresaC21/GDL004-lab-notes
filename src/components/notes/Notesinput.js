@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const Notesinput = ({ createNote }) => {
+const Notesinput = ({ createNote, hideModalAddNote }) => { // 
   // State for project
   const [newNote, setNewNote] = useState({
     note: "",
@@ -41,18 +41,29 @@ const Notesinput = ({ createNote }) => {
     setNewNote({
       note: "",
     });
+
+    // Modal
+    hideModalAddNote();
   };
+
+  const handleClickModal = (e) => {
+    if(e.target === e.currentTarget) {
+      hideModalAddNote();
+    }
+  }
+
   return (
     /*  <div className="row">
       <div className="col s12 m6 mt4"> */
-    <div id="modalNote" className="card backgroundModal modal">
+    <div className="modalInput" onClick={handleClickModal}>
+    <div className="card backgroundModal animated fadeInDown">
       <span className="card-title textColorLogo ml3a">New Note</span>
       <div className="card-image">
-        <a className="btn-floating halfway-fab waves-effect waves-light  deep-orange accent-2 mba7">
+        <a href="#!" className="btn-floating halfway-fab waves-effect waves-light  deep-orange accent-2 mba7">
           <i className="material-icons">edit</i>
         </a>
         {/*  <img src="images/sample-1.jpg" /> */}
-        <a href="#" className="btn-floating halfway-fab waves-effect waves-light red mr4 mba7">
+        <a href="#!" className="btn-floating halfway-fab waves-effect waves-light red mr4 mba7">
           <i className="material-icons">delete</i>
         </a>
       </div>
@@ -83,6 +94,7 @@ const Notesinput = ({ createNote }) => {
       <div className="card-action">
         
       </div>
+    </div>
     </div>
     /*  </div>
     </div> */

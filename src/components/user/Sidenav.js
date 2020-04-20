@@ -1,14 +1,15 @@
 import React from 'react';
 
-const Sidenav = () => {
+const Sidenav = ({ showModalAddNote }) => { // component Home
+
     return (
       <aside>
         <ul className="collection mt0 mb0">
           
-          <a
-            className="collection-item waves-effect btn modal-trigger textOrange"
-            /* this href take like modal COMPONENT ID Notesinput */
-            href="#modalNote"
+          <a  href="#!" 
+            className="collection-item waves-effect modal-trigger textOrange"
+            onClick={showModalAddNote}
+            /* Function useState de component Home */
           >
            Add Note
           </a>

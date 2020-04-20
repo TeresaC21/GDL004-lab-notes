@@ -1,6 +1,8 @@
 import React  from 'react';
 
-const Notes = ({ note }) => {
+import Notesinput from './Notesinput'
+
+const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
   
   return (
     <div className="row">
@@ -9,12 +11,13 @@ const Notes = ({ note }) => {
           <span className="card-title textNote">Note</span>
 
           <div className="card-image">
-            <a
+            <a href="#!" 
               className="collection-item modal-trigger btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"
-              href="#modalNote"
+              onClick={showModalAddNote}
             >
               <i className="material-icons">add_circle</i>
             </a>
+           
             {/*  <img src="images/sample-1.jpg" /> */}
           </div>
 
@@ -23,7 +26,7 @@ const Notes = ({ note }) => {
           </div>
 
           <div className="card-action">
-            <a href="#" className="textColorsBar ml80"></a> {/* Delete */}
+           {/*  <a href="#!" className="textColorsBar ml80"><p>delete</p></a> */} {/* Delete */}
           </div>
         </div>
       </div>
@@ -75,7 +78,7 @@ export default Notes;
 
   } */
 
-{/* {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
+/* {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
               : null}
 
             <form 
@@ -93,4 +96,4 @@ export default Notes;
               name="action"
               >Save
             </button> 
-            </form> */}
+            </form> */

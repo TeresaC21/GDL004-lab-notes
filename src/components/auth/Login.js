@@ -1,10 +1,13 @@
 import React, { useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-/* import { v4 as uuidv4 } from 'uuid'; */
+import { Link, withRouter } from 'react-router-dom'; // tiene prop history
+
+// Components
 import Header from '../layout/Header';
 import { loginFB } from '../firebase/helper-firebaseAuth'
 
-const Login = () => {
+
+
+const Login = ({ history }) => {
   // State from value email and password
   const [user, setSaveUser] = useState({
     email: "",
@@ -13,6 +16,7 @@ const Login = () => {
 
   // State from not empty inputs
   const [error, setError] = useState(false);
+  const [errorUs, setErrorUs] = useState(false);
 
   // Take values email and password of input
   const onChangeInput = (e) => {
@@ -23,10 +27,8 @@ const Login = () => {
   };
   const { email, password } = user;
 
- 
-
   // Click user
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     // Validate not empty inputs
@@ -37,14 +39,20 @@ const Login = () => {
     // Delete mesage error
     setError(false);
 
-    // I THINK ------ ID HERE PUT ID FIREBASE
+    // Login with Firebase
+    try {
+      const showUser = await loginFB(user);
+      console.log(showUser);
+       history.push('/home') 
+    } catch (errorUs) {
+      console.error('Error create account', errorUs.message)
+      setErrorUs(true)
+      return;
+    }
+    
+   // I THINK ------ ID HERE PUT ID FIREBASE
    /*  user.id = uuidv4(); */
     //console.log(user);
-
-    loginFB(user);
-   
-   
-    // Run action
   };
 
   return (
@@ -99,6 +107,11 @@ const Login = () => {
                         Login
                       </button>
                     </div>
+
+                    {errorUs ? ( 
+                    <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{errorUs.message}</p>
+                    ) : null}
+
                   </form>
 
                   <Link to={"/register"}>
@@ -114,4 +127,4 @@ const Login = () => {
   );
 };
  
-export default Login;
+export default withRouter (Login);

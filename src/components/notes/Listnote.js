@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
+
+// components
 import Notes from './Notes' // I still dont not it can be notes or notesinput
 import Notesinput from './Notesinput'
 
-const Listnote = () => {
+const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components Home
   // List of notes
   const [notes, setNotes] = useState([]);
 
@@ -12,11 +14,7 @@ const Listnote = () => {
   };
   return (
     <Fragment>
-      <ul>
-        <Notesinput 
-        createNote={createNote} 
-        />
-      </ul>
+      {modalInput ? <Notesinput createNote={createNote} hideModalAddNote={hideModalAddNote} /> : null}
       <div>
         <h5 className="textPurple mlL">LIST NOTES</h5>
         {notes.map((note) => (
@@ -25,6 +23,7 @@ const Listnote = () => {
            note={note} 
            />
         ))}
+        
       </div>
     </Fragment>
   );

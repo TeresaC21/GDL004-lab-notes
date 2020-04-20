@@ -4,7 +4,9 @@ import Header from '../layout/Header';
 /* import { v4 as uuidv4 } from 'uuid'; */
 import { registerFB } from '../firebase/helper-firebaseAuth'
 
-const Register = () => {
+import { withRouter } from 'react-router' // tiene prop history
+
+const Register = ({ history }) => {
   const [user, setSaveUser] = useState({
     name: "",
     email: "",
@@ -13,6 +15,7 @@ const Register = () => {
   });
 
   const [error, setError] = useState(false);
+  const [errorUs, setErrorUs] = useState(false);
 
   // Take values email and password of input
   const onChangeInput = (e) => {
@@ -24,7 +27,7 @@ const Register = () => {
   const { name, email, password, confirmPassword } = user;
 
   // Click user
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     // Validate not empty inputs
     if (
@@ -39,9 +42,16 @@ const Register = () => {
     // Delete mesage error
     setError(false);
 
-    // import function Firebase for register
-    registerFB(user);
-
+    // Register with Firebase
+    try {
+      await registerFB(user);
+      history.push('/home')
+    } catch (errorUs) {
+      console.error('Error create account', errorUs.message)
+      setErrorUs(true)
+      return;
+    }
+    
     // I THINK ------ ID HERE PUT ID FIREBASE
 /*     user.id = uuidv4(); */
     //console.log(user);
@@ -62,7 +72,7 @@ const Register = () => {
             <div className="card center-align opacity-tc">
               <div className="card-content">
                 {error ? (
-                  <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb3">
+                  <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate pd mb3">
                     ALL FIELDS ARE REQUIRED
                   </p>
                 ) : null}
@@ -124,6 +134,11 @@ const Register = () => {
                       Sign up
                     </button>
                   </div>
+
+                {errorUs ? ( 
+                <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{errorUs.message}</p>
+                ) : null}
+
                 </form>
                 <Link to={"/"}>
                   <p className="right-align">Login</p>
@@ -136,4 +151,4 @@ const Register = () => {
     </div>
   );
 };
-export default Register;
+export default withRouter (Register);

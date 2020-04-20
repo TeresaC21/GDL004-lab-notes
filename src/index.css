@@ -31,6 +31,20 @@ width: 100vw;
   margin-top: 0;
   padding-top: 20%;
 }
+.modalInput{
+  display: block;
+  position: fixed;
+  z-index: 10;
+  padding-top: 100px;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,.4);
+}
 .title{
   text-align: center;
   margin-left: 10%;
@@ -69,8 +83,9 @@ width: 100vw;
 .textColorate{
    color: #CEFF1A !important ;
    text-align: center !important;
-   padding: .7rem !important;
-  /* color: #F75C03; */
+}
+.pd{
+  padding: .7rem !important;
 }
 .textPurple{
   color: #631D76 !important;
@@ -198,4 +213,44 @@ form i.active, label.active {
 }
 .barWidth{
   width: 12rem;
+}
+
+/* Animation modal */
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+.animated {
+  -webkit-animation-duration: 700ms;
+  animation-duration: 700ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
