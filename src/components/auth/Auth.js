@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import firebaseIn from "../firebase/firebase";
+import UserAuthFB from '../firebase/UserAuthFB';
 
-export const AuthContext = React.createContext();  //using in PrivateRoute into useContext
+export const AuthContext = React.createContext();  //using in PrivateRoute and Navbar useContext
 
 export const AuthProvider = ({ children }) => {
-    
-    const [currentUser, setCurrentUser] = useState(null);
-
-    useEffect(() => {
-        firebaseIn.auth().onAuthStateChanged(setCurrentUser);
-        
-    }, []);
-
+    const userFB = UserAuthFB();
+    //console.log(userFB); 
+   
     return (
         <AuthContext.Provider
         value={{
-        currentUser
+        firebaseIn,
+        userFB
         }}
         >
             {children}
         </AuthContext.Provider>
     );
 };
+
+
+ /* const [currentUser, setCurrentUser] = useState(null);
+    useEffect(() => {
+        firebaseIn.auth().onAuthStateChanged(setCurrentUser);     
+    }, []); */

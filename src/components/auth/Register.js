@@ -14,8 +14,11 @@ const Register = ({ history }) => {
     confirmPassword: "",
   });
 
-  const [error, setError] = useState(false);
-  const [errorUs, setErrorUs] = useState(false);
+  /* const [error, setError] = useState(false); */
+  const [error, setError] = useState({
+    errorFields: false,
+    errorUs: false
+  });
 
   // Take values email and password of input
   const onChangeInput = (e) => {
@@ -36,19 +39,29 @@ const Register = ({ history }) => {
       password.trim() === "" ||
       confirmPassword.trim() === ""
     ) {
-      setError(true);
+      setError({
+        ...error,
+        errorFields: true
+      });
       return;
     }
+   
     // Delete mesage error
-    setError(false);
+    setError({
+      ...error,
+      errorFields: false
+    });
 
     // Register with Firebase
     try {
       await registerFB(user);
       history.push('/home')
-    } catch (errorUs) {
-      console.error('Error create account', errorUs.message)
-      setErrorUs(true)
+    } catch (error) {
+      console.error('Error login account', error.message)
+      setError({
+        ...error,
+        errorUs: error.message
+      })
       return;
     }
     
@@ -71,7 +84,7 @@ const Register = ({ history }) => {
           <div className="col s12 m8 offset-m2 xl6 offset-xl3">
             <div className="card center-align opacity-tc">
               <div className="card-content">
-                {error ? (
+                {error.errorFields ? (
                   <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate pd mb3">
                     ALL FIELDS ARE REQUIRED
                   </p>
@@ -135,8 +148,8 @@ const Register = ({ history }) => {
                     </button>
                   </div>
 
-                {errorUs ? ( 
-                <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{errorUs.message}</p>
+                {error.errorFields ? ( 
+                <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{error.errorUs}</p>
                 ) : null}
 
                 </form>

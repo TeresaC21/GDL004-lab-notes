@@ -1,11 +1,9 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom'; // tiene prop history
 
 // Components
 import Header from '../layout/Header';
 import { loginFB } from '../firebase/helper-firebaseAuth'
-
-
 
 const Login = ({ history }) => {
   // State from value email and password
@@ -15,8 +13,10 @@ const Login = ({ history }) => {
   });
 
   // State from not empty inputs
-  const [error, setError] = useState(false);
-  const [errorUs, setErrorUs] = useState(false);
+  const [error, setError] = useState({
+    errorFields: false,
+    errorUs: false
+  });
 
   // Take values email and password of input
   const onChangeInput = (e) => {
@@ -33,28 +33,38 @@ const Login = ({ history }) => {
 
     // Validate not empty inputs
     if (email.trim() === "" || password.trim() === "") {
-      setError(true);
+      setError({
+        ...error,
+        errorFields: true
+      });
       return;
     }
     // Delete mesage error
-    setError(false);
+    setError({
+      ...error,
+      errorFields: false
+    });
 
     // Login with Firebase
     try {
       const showUser = await loginFB(user);
       console.log(showUser);
        history.push('/home') 
-    } catch (errorUs) {
-      console.error('Error create account', errorUs.message)
-      setErrorUs(true)
+    } catch (error) {
+      console.error('Error login account', error.message)
+      setError({
+        ...error,
+        errorUs: error.message
+      })
       return;
     }
+    
     
    // I THINK ------ ID HERE PUT ID FIREBASE
    /*  user.id = uuidv4(); */
     //console.log(user);
   };
-
+  
   return (
     <Fragment>
       <div className="backgroundForms">
@@ -65,7 +75,7 @@ const Login = ({ history }) => {
             <div className="col s12 m8 offset-m2 xl6 offset-xl3">
               <div className="card center-align opacity-tc">
                 <div className="card-content">
-                  {error ? (
+                  {error.errorFields ? (
                     <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb3">
                       ALL FIELDS ARE REQUIRED
                     </p>
@@ -108,8 +118,8 @@ const Login = ({ history }) => {
                       </button>
                     </div>
 
-                    {errorUs ? ( 
-                    <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{errorUs.message}</p>
+                    {error.errorUs ? ( 
+                    <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorate mb2">{error.errorUs}</p>
                     ) : null}
 
                   </form>

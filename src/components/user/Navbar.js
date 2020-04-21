@@ -1,9 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Sidenav from './Sidenav';
+import { Redirect } from 'react-router-dom';
 import { logout } from '../firebase/helper-firebaseAuth';
+import {AuthContext} from '../auth/Auth'
 
 const Navbar = () => {
 
+  const { userFB } = useContext(AuthContext);
+ 
   return (
 <Fragment>
   <nav>
@@ -14,8 +18,11 @@ const Navbar = () => {
       </a>
   
       <ul className="right hide-on-med-and-down">
+        <li>
+        <p>{userFB ? userFB.displayName : null}</p>
+        </li>
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
-        <li><a href="#!" onClick={logout()}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
+        <li><a href="#!" onClick={() => logout()}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
       </ul>
     </div>
   </nav>

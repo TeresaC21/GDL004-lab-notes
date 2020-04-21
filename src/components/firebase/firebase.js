@@ -13,5 +13,5 @@ import 'firebase/firestore';
   };
   // Initialize Firebase
   const firebaseIn = firebase.initializeApp(firebaseConfig);
-  
+
 export default firebaseIn;

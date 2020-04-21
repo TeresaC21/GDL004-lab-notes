@@ -18,8 +18,8 @@ export const loginFB = async (loginData) => {
         /* window.location = "/home"  */
 } 
 
-export const logout =  () => {
-     firebaseIn
+export const logout =  async () => {
+     await firebaseIn
     .auth()
     .signOut();
   };

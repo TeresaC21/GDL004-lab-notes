@@ -20,7 +20,7 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
         {notes.map((note) => (
           <Notes
            key={note.id} 
-           note={note} 
+           note={note}
            />
         ))}
         

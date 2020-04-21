@@ -1,6 +1,6 @@
 import React  from 'react';
 
-import Notesinput from './Notesinput'
+/* import Notesinput from './Notesinput' */
 
 const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
   
