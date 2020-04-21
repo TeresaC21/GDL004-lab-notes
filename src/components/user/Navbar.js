@@ -1,13 +1,18 @@
 import React, { Fragment, useContext } from 'react';
 import Sidenav from './Sidenav';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';// it have prop history
 import { logout } from '../firebase/helper-firebaseAuth';
 import {AuthContext} from '../auth/Auth'
+import firebaseIn from '../firebase/firebase';
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
 
   const { userFB } = useContext(AuthContext);
  
+  const outUser = async () => {
+    await firebaseIn.logout()
+    history.push('/') 
+  }
   return (
 <Fragment>
   <nav>
@@ -22,7 +27,7 @@ const Navbar = () => {
         <p>{userFB ? userFB.displayName : null}</p>
         </li>
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
-        <li><a href="#!" onClick={() => logout()}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
+        <li><a href="#!" onClick={outUser}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
       </ul>
     </div>
   </nav>
@@ -37,4 +42,4 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+export default withRouter (Navbar);

@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom'; // tiene prop history
+import { Link, withRouter } from 'react-router-dom'; // it have prop history
 
 // Components
 import Header from '../layout/Header';

@@ -18,19 +18,17 @@ export const loginFB = async (loginData) => {
         /* window.location = "/home"  */
 } 
 
+// Sign Out
 export const logout =  async () => {
      await firebaseIn
     .auth()
     .signOut();
   };
 
-  /* export const loginFB = async (loginData) => {
-    try {
-        await firebaseIn
-        .auth()
-        .signInWithEmailAndPassword(loginData.email, loginData.password)
-       window.location = "/home"
-    } catch (error) {
-        console.log(error)
-    }
-} */ 
+ // Notes
+/* export const noteFB = async () => {
+    const nNote = await firebaseIn
+    .firestore()
+    .collection('quote')
+    .onSnapshot(snapshot)
+} */
