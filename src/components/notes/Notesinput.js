@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { noteFB } from '../firebase/helper-firebaseAuth';
+import firebase from '../firebase/firebase'
 
 const Notesinput = ({ createNote, hideModalAddNote }) => { // 
   // State for project
@@ -17,6 +19,15 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
   };
   const { note } = newNote; // extract note of project
 
+/*   useEffect(() => {
+    const searchData = async () => {
+     const data = await noteFB().get();
+     setNewNote(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+    }
+     searchData();
+   }, []); */
+
+
   // When user save note
   const onSubmitNote = (e) => {
     e.preventDefault();
@@ -30,13 +41,25 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
     // Delete mesage error
     setError(false);
 
-    // I THINK ------ ID HERE PUT ID FIREBASE
-    newNote.id = uuidv4();
+    // ID FOR FIRESTORE
+    // newNote.id = uuidv4();
     //console.log(note);
-
     // Create note in COMPONENT Listnote
-    createNote(newNote);
+    //createNote(newNote)
 
+    
+    // I THINK ------ ID HERE PUT ID FIREBASE
+    // Create Note in Firestore
+    noteFB().add(newNote)
+     .then(function(docRef) {
+       const idNote = docRef.id
+      createNote(idNote);
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+    });
+  
     // reload the form
     setNewNote({
       note: "",
@@ -51,6 +74,8 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
       hideModalAddNote();
     }
   }
+
+  
 
   return (
     /*  <div className="row">

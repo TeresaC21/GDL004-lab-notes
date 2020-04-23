@@ -20,15 +20,21 @@ export const loginFB = async (loginData) => {
 
 // Sign Out
 export const logout =  async () => {
-     await firebaseIn
+     return await firebaseIn
     .auth()
     .signOut();
   };
 
+  // Add notes
+ /*  export const dbNotes = () => {
+      const db = firebaseIn.db.collection('notes').add()
+  } */
+
  // Notes
-/* export const noteFB = async () => {
-    const nNote = await firebaseIn
+ export const noteFB = () => {
+   const db = firebaseIn.firestore()
+   return db.collection('notes');
+    /*  firebaseIn
     .firestore()
-    .collection('quote')
-    .onSnapshot(snapshot)
-} */
+    .collection('notes') */ 
+}

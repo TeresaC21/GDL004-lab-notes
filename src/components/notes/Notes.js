@@ -1,9 +1,25 @@
-import React  from 'react';
+import React, {useState}  from 'react';
+
+import { noteFB } from '../firebase/helper-firebaseAuth'
 
 /* import Notesinput from './Notesinput' */
 
 const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
-  
+ console.log(note);
+ 
+   const [name, setName] = useState(note.name);
+
+  const onEditFB = () => {
+    noteFB().doc(note.id).set({...note, name});
+  };
+
+  const onDeleteFB = () => {
+    noteFB.doc(note.id).delete();
+  };
+  const onChange = e => {
+    setName(e.target.value);
+  }; 
+
   return (
     <div className="row">
       <div className="col s12 m6 ">
@@ -13,20 +29,21 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
           <div className="card-image">
             <a href="#!" 
               className="collection-item modal-trigger btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"
-              onClick={showModalAddNote}
             >
-              <i className="material-icons">add_circle</i>
+              <i className="material-icons"  onClick={showModalAddNote}>add_circle</i>
             </a>
            
             {/*  <img src="images/sample-1.jpg" /> */}
           </div>
 
           <div className="card-content textNote">
-            <p>{note.note}</p>
+            {/* <p>{note.note}</p> */}
+    <input value={note.note} onClick={onChange} />  
           </div>
 
           <div className="card-action">
-           {/*  <a href="#!" className="textColorsBar ml80"><p>delete</p></a> */} {/* Delete */}
+          <a href="#!" className="textColorsBar ml70" onClick={onDeleteFB}>delete</a> 
+            <a href="#!" className="textColorsBar" onClick={onEditFB}>edit</a> 
           </div>
         </div>
       </div>

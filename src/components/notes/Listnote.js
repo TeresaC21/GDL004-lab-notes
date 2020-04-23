@@ -1,4 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+
+import { noteFB } from '../firebase/helper-firebaseAuth';
 
 // components
 import Notes from './Notes' // I still dont not it can be notes or notesinput
@@ -12,6 +14,27 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
   const createNote = (note) => {
     setNotes([...notes, note]);
   };
+console.log(notes);
+
+// Insert in list all notes of firestore
+useEffect(() => {
+  const searchData = async () => {
+   const data = await noteFB().get();
+   setNotes(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+  }
+   searchData();
+ }, []);
+
+ /* useEffect(() => {
+    noteFB().onSnapshot((snapshot) => {
+      const newQuote = snapshot.docs.map((doc) =>({
+          id: doc.id,
+          ...doc.data() 
+  }))
+  setNotes([...notes, note, newQuote]);
+  })  
+}, [])  */
+
   return (
     <Fragment>
       {modalInput ? <Notesinput createNote={createNote} hideModalAddNote={hideModalAddNote} /> : null}
