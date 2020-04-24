@@ -8,14 +8,12 @@ export const registerFB = async (registerData, e) => {
          return await newUser.user.updateProfile({
             displayName: registerData.name
         })   
-       /*  window.location= "/home" */
 }
 
 export const loginFB = async (loginData) => {
        return await firebaseIn
         .auth()
-        .signInWithEmailAndPassword(loginData.email, loginData.password)
-        /* window.location = "/home"  */
+        .signInWithEmailAndPassword(loginData.email, loginData.password);
 } 
 
 // Sign Out
@@ -25,16 +23,8 @@ export const logout =  async () => {
     .signOut();
   };
 
-  // Add notes
- /*  export const dbNotes = () => {
-      const db = firebaseIn.db.collection('notes').add()
-  } */
-
- // Notes
+ // Notes collection
  export const noteFB = () => {
-   const db = firebaseIn.firestore()
+   const db = firebaseIn.firestore();
    return db.collection('notes');
-    /*  firebaseIn
-    .firestore()
-    .collection('notes') */ 
 }

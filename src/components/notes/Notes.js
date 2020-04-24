@@ -2,23 +2,20 @@ import React, {useState}  from 'react';
 
 import { noteFB } from '../firebase/helper-firebaseAuth'
 
-/* import Notesinput from './Notesinput' */
-
 const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
- console.log(note);
  
-   const [name, setName] = useState(note.name);
+   const [noteAdd, setNoteAdd] = useState(note.noteAdd);
 
   const onEditFB = () => {
-    noteFB().doc(note.id).set({...note, name});
+    noteFB().doc(note.id).set({...note, noteAdd});
   };
 
   const onDeleteFB = () => {
-    noteFB.doc(note.id).delete();
+    noteFB().doc(note.id).delete();
   };
-  const onChange = e => {
-    setName(e.target.value);
-  }; 
+  /* const onChange = e => {
+    setNoteAdd(e.target.value);
+  };  */
 
   return (
     <div className="row">
@@ -38,7 +35,7 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
 
           <div className="card-content textNote">
             {/* <p>{note.note}</p> */}
-    <input value={note.note} onClick={onChange} />  
+    <input value={note.note} onChange={e => setNoteAdd(e.target.value)} />  
           </div>
 
           <div className="card-action">
