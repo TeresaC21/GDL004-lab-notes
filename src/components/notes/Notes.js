@@ -1,50 +1,49 @@
-import React, {useState}  from 'react';
+import React, { useState }  from 'react';
 
-import { noteFB } from '../firebase/helper-firebaseAuth'
+import { noteFB } from '../firebase/helper-firebaseAuth';
 
 const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
- 
-   const [noteAdd, setNoteAdd] = useState(note.noteAdd);
+ console.log(note);
+  const { id, title, description } = note;
+   const [currentNote, setCurrentNote] = useState({
+     title,
+      description
+   });
 
   const onEditFB = () => {
-    noteFB().doc(note.id).set({...note, noteAdd});
-  };
+    noteFB().doc(id).set({
+      ...currentNote,
+      description: currentNote.description
+    });
+  };                   
 
   const onDeleteFB = () => {
-    noteFB().doc(note.id).delete();
+    noteFB().doc(id).delete();
   };
-  /* const onChange = e => {
-    setNoteAdd(e.target.value);
-  };  */
+  const onChangeNew = e => {
+    setCurrentNote({
+      ...currentNote,
+      description: e.target.value
+    });
+  };  
 
   return (
-    <div className="row">
       <div className="col s12 m6 ">
-        <div className="card opacity-tc">
-          <span className="card-title textNote">Note</span>
-
-          <div className="card-image">
-            <a href="#!" 
-              className="collection-item modal-trigger btn-floating halfway-fab waves-effect waves-light red mb1 textColorsBar"
-            >
-              <i className="material-icons"  onClick={showModalAddNote}>add_circle</i>
-            </a>
-           
-            {/*  <img src="images/sample-1.jpg" /> */}
-          </div>
-
+        <div className="card opacity-tc actionBtnContainer">
           <div className="card-content textNote">
+
+          <span className="card-title textNote">{currentNote.title}</span>
             {/* <p>{note.note}</p> */}
-    <input value={note.note} onChange={e => setNoteAdd(e.target.value)} />  
+    <input value={currentNote.description} onChange={onChangeNew} />  
           </div>
 
           <div className="card-action">
-          <a href="#!" className="textColorsBar ml70" onClick={onDeleteFB}>delete</a> 
-            <a href="#!" className="textColorsBar" onClick={onEditFB}>edit</a> 
+          
+          <a href="#!" className="actionBtn ml70" onClick={onDeleteFB}>delete</a> 
+            <a href="#!" className="actionBtn" onClick={onEditFB}>edit</a> 
           </div>
         </div>
       </div>
-    </div>
   );
 };
  

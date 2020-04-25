@@ -10,6 +10,7 @@ import Notesinput from './Notesinput'
 const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components Home
   
   const [notes, setNotes] = useState([]);
+
   // Function take notes actually and add the new
   const createNote = (note) => {
     // get note created in component Noteinput that pass like prop //setNotes([...notes, note]);
@@ -19,8 +20,14 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
  useEffect(() => {
     return noteFB().onSnapshot((snapshot) => {
       const noteData = [];
-      snapshot.forEach(doc => noteData.push(({...doc.data(), id: doc.id})));
-      setNotes(noteData); 
+      snapshot.forEach(doc => 
+        noteData.push(({
+          id: doc.id,
+          title: doc.data().title,
+          description: doc.data().description
+        })));
+      setNotes(noteData);
+      console.log(noteData) 
   })
  }, []); 
 
@@ -30,7 +37,6 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
       <div>
         <h5 className="textPurple mlL">LIST NOTES</h5>
         {notes.map((note) => {
-          console.log(note, '-->s');
           return (
             <Notes
              key={note.id} 
