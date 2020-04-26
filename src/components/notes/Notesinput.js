@@ -61,7 +61,7 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
   return (
     <div className="modalInput" onClick={handleClickModal}>
       <div className="card backgroundModal animated fadeInDown">
-        <form onSubmit={onSubmitNote} autocomplete="off">
+        <form onSubmit={onSubmitNote} autoComplete="off">
           <div className="card-content textColorLogo">
             <span className="card-title textColorLogo">New Note</span>
             <div className="card-image">
@@ -78,7 +78,7 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
                 field are required
               </p>
             ) : null}
-            <div class="row">
+            <div className="row">
               <div className="input-field col s6">
                 <input
                   autcomplete="off"
@@ -89,11 +89,11 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
                   value={title}
                   onChange={onChangeNote}
                 />
-                <label for="title">I'm a title</label>
+                <label htmlFor="title">I'm a title</label>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
+            <div className="row">
+              <div className="input-field col s12">
                 <textarea
                   autcomplete="off"
                   className="materialize-textarea textColorLogo"
@@ -103,7 +103,7 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
                   value={description}
                   onChange={onChangeNote}
                 />
-                <label for="textareaDescription">Add note description...</label>
+                <label htmlFor="textareaDescription">Add note description...</label>
               </div>
             </div>
           </div>

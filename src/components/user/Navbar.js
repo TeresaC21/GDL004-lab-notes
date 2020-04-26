@@ -1,18 +1,21 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import Sidenav from './Sidenav';
-import { withRouter } from 'react-router-dom';// it have prop history
+import { useHistory } from 'react-router-dom';
 import { logout } from '../firebase/helper-firebaseAuth';
-import {AuthContext} from '../auth/Auth'
+import {AuthContext} from '../auth/Auth';
 import firebaseIn from '../firebase/firebase';
 
-const Navbar = ({ history, showModalAddNote}) => {
+const Navbar = ({ showModalAddNote }) => {
 
   const { userFB } = useContext(AuthContext);
- 
+
+  const history = useHistory();
+
   const outUser = async () => {
     await firebaseIn.logout()
     history.push('/') 
   }
+
   return (
 <Fragment>
   <nav>
@@ -33,15 +36,21 @@ const Navbar = ({ history, showModalAddNote}) => {
   </nav>
  {/*  onClick={() => firebaseIn.auth().signOut()}  */}
                         {/* Here bar responsive */}
-  <ul className="sidenav backgroundBurger barWidth" id="menuResponsive">
-    <div className="modalInput">
-    <Sidenav onClick={showModalAddNote}/>
-    </div>
+  <ul className="sidenav backgroundBurger barWidth" id="menuResponsive"> 
+ 
+  <Sidenav showSideNav showModalAddNote={showModalAddNote} />
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!"><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
   </ul>
+
   </Fragment>
   );
 }
 
-export default withRouter (Navbar);
+export default Navbar;
+
+ /* {hideNav ? <Sidenav showSideNav showModalAddNote={showModalAddNote} />  : null} */
+ /* const [hideNav, setHideNav] = useState(false)
+  const showSideNav = () => {
+    setHideNav(true);
+  } */

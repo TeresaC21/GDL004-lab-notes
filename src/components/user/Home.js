@@ -18,9 +18,11 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar
+        showModalAddNote={showModalAddNote}
+      />
       <div className="row backgroundColorsHome">
-        <div /* className="backgroundColorsHome" */>
+        <div className="">
           <div className="col s3 hide-on-med-and-down l2 backgroundGray marginCollection">
             <Sidenav
             showModalAddNote={showModalAddNote}
