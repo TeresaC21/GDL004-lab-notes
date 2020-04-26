@@ -60,70 +60,68 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
   
   return (
     <div className="modalInput" onClick={handleClickModal}>
-    <div className="card backgroundModal animated fadeInDown">
+      <div className="card backgroundModal animated fadeInDown">
         <form onSubmit={onSubmitNote} autocomplete="off">
-        <div className="card-content textColorLogo">
-      <span className="card-title textColorLogo">New Note</span>
-      <div className="card-image">
-        <a href="#!" className="btn-floating halfway-fab waves-effect waves-light  deep-orange accent-2 mba7">
-          <i className="material-icons">star</i>
-        </a>
-  
-        {/*  <img src="images/sample-1.jpg" /> */}
-      {/*   <a href="#!" className="btn-floating halfway-fab waves-effect waves-light red mr4 mba7">
-          <i className="material-icons">delete</i>
-        </a> */}
-      </div>
-       
-        {error ? (
-          <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">
-            field are required
-          </p>
-        ) : null}
-        <div class="row">
-          <div className="input-field col s6">
-            <input
-              autcomplete="off"
-              className="textColorLogo"
-              id="title" type="text"
-              name="title"
-              value={title}
-              onChange={onChangeNote}
-            />
-            <label for="title">I'm a title</label>
+          <div className="card-content textColorLogo">
+            <span className="card-title textColorLogo">New Note</span>
+            <div className="card-image">
+              <a
+                href="#!"
+                className="btn-floating halfway-fab waves-effect waves-light  deep-orange accent-2 mba7"
+              >
+                <i className="material-icons">star</i>
+              </a>
+            </div>
+
+            {error ? (
+              <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">
+                field are required
+              </p>
+            ) : null}
+            <div class="row">
+              <div className="input-field col s6">
+                <input
+                  autcomplete="off"
+                  className="textColorLogo"
+                  id="title"
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={onChangeNote}
+                />
+                <label for="title">I'm a title</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                  autcomplete="off"
+                  className="materialize-textarea textColorLogo"
+                  data-length="120"
+                  id="textareaDescription"
+                  name="description"
+                  value={description}
+                  onChange={onChangeNote}
+                />
+                <label for="textareaDescription">Add note description...</label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-          <textarea
-            autcomplete="off"
-            className="materialize-textarea textColorLogo"
-            data-length="120"
-            id="textareaDescription"
-            name="description"
-            value={description}
-            onChange={onChangeNote}
-          />
-            <label for="textareaDescription">Add note description...</label>
+          <div className="card-action">
+            <div className="row">
+              <div className="col s4 right">
+                <button
+                  className="btn btn-block waves-effect waves-light deep-orange"
+                  type="submit"
+                  name="action"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        
-      </div>
-      <div className="card-action">
-        <div className="row">
-        <div className="col s4 right">
-          <button
-            className="btn btn-block waves-effect waves-light deep-orange"
-            type="submit"
-            name="action"
-          >
-            Save
-          </button>
-        </div>
-        </div>
-      </div>
         </form>
-    </div>
+      </div>
     </div>
   );
 };

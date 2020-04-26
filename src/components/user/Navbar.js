@@ -5,7 +5,7 @@ import { logout } from '../firebase/helper-firebaseAuth';
 import {AuthContext} from '../auth/Auth'
 import firebaseIn from '../firebase/firebase';
 
-const Navbar = ({ history }) => {
+const Navbar = ({ history, showModalAddNote}) => {
 
   const { userFB } = useContext(AuthContext);
  
@@ -34,7 +34,9 @@ const Navbar = ({ history }) => {
  {/*  onClick={() => firebaseIn.auth().signOut()}  */}
                         {/* Here bar responsive */}
   <ul className="sidenav backgroundBurger barWidth" id="menuResponsive">
-    <Sidenav />
+    <div className="modalInput">
+    <Sidenav onClick={showModalAddNote}/>
+    </div>
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!"><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
   </ul>

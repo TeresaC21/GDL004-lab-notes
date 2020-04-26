@@ -34,7 +34,7 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
 
           <span className="card-title textNote">{currentNote.title}</span>
             {/* <p>{note.note}</p> */}
-    <input value={currentNote.description} onChange={onChangeNew} />  
+             <input value={currentNote.description} onChange={onChangeNew} />  
           </div>
 
           <div className="card-action">

@@ -5,7 +5,6 @@ const Sidenav = ({ showModalAddNote }) => { // component Home
     return (
       <aside>
         <ul className="collection mt0 mb0">
-          
           <a  href="#!" 
             className="collection-item waves-effect modal-trigger textOrange"
             onClick={showModalAddNote}

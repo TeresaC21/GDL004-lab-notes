@@ -267,3 +267,18 @@ form i.active, label.active {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
+ @media only screen and (max-width: 600px) {
+.modalInput{
+  z-index: 10;
+  padding-top: 5px;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  left: 0;
+  top: 0;
+  width: 5%;
+  height: 5%;
+  overflow: auto;
+  background-color: rgba(0,0,0,.4);
+}
+} 
