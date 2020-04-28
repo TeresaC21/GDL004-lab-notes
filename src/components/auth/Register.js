@@ -4,9 +4,12 @@ import Header from '../layout/Header';
 /* import { v4 as uuidv4 } from 'uuid'; */
 import { registerFB } from '../firebase/helper-firebaseAuth'
 
-import { withRouter } from 'react-router' // tiene prop history
+import { useHistory } from 'react-router' // tiene prop history
 
-const Register = ({ history }) => {
+const Register = () => {
+
+  const history = useHistory();
+
   const [user, setSaveUser] = useState({
     name: "",
     email: "",
@@ -65,15 +68,10 @@ const Register = ({ history }) => {
       return;
     }
     
-    // I THINK ------ ID HERE PUT ID FIREBASE
-/*     user.id = uuidv4(); */
-    //console.log(user);
-
     // Password min of six caracters
 
     // The 2 password same
 
-    // Run action
   };
 
   return (
@@ -90,7 +88,7 @@ const Register = ({ history }) => {
                   </p>
                 ) : null}
 
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit}  autoComplete="off">
                   <h4 className="mt0 mb3 textColorLogo">Register</h4>
                   <div className="grey-text">
                     <div className="input-field col s12">
@@ -164,4 +162,4 @@ const Register = ({ history }) => {
     </div>
   );
 };
-export default withRouter (Register);
+export default  Register;

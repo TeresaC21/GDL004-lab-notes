@@ -1,19 +1,18 @@
-import React, { Fragment, useContext, useState } from 'react';
-import Sidenav from './Sidenav';
-import { useHistory } from 'react-router-dom';
-import { logout } from '../firebase/helper-firebaseAuth';
+import React, { Fragment, useContext } from 'react';
+
+// Helper Firebase
+import { logOutFB } from '../firebase/helper-firebaseAuth';
 import {AuthContext} from '../auth/Auth';
-import firebaseIn from '../firebase/firebase';
+
+// Component
+import Sidenav from './Sidenav';
 
 const Navbar = ({ showModalAddNote }) => {
 
-  const { userFB } = useContext(AuthContext);
+  const { userCurrent } = useContext(AuthContext);
 
-  const history = useHistory();
-
-  const outUser = async () => {
-    await firebaseIn.logout()
-    history.push('/') 
+  const outUser =  async () => {
+    await logOutFB();
   }
 
   return (
@@ -27,7 +26,7 @@ const Navbar = ({ showModalAddNote }) => {
   
       <ul className="right hide-on-med-and-down">
         <li>
-        <p>{userFB ? userFB.displayName : null}</p>
+        <p>{userCurrent ? userCurrent.displayName : null}</p>
         </li>
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!" onClick={outUser}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>

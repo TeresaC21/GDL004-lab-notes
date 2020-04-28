@@ -1,11 +1,17 @@
 import React, { useState, Fragment, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom'; // it have prop history
+import { Link, useHistory } from 'react-router-dom'; // it have prop history
+import { AuthContext } from './Auth';
+
+//Firebase
+import { loginFB } from '../firebase/helper-firebaseAuth';
 
 // Components
 import Header from '../layout/Header';
-import { loginFB } from '../firebase/helper-firebaseAuth'
 
-const Login = ({ history }) => {
+
+const Login = () => {
+
+  const history = useHistory();
   // State from value email and password
   const [user, setSaveUser] = useState({
     email: "",
@@ -59,11 +65,15 @@ const Login = ({ history }) => {
       return;
     }
     
-    
    // I THINK ------ ID HERE PUT ID FIREBASE
    /*  user.id = uuidv4(); */
     //console.log(user);
   };
+  
+  /* const { userFB } = useContext(AuthContext);
+    if(userFB){
+      return history.push('/');
+    } */
   
   return (
     <Fragment>
@@ -81,7 +91,7 @@ const Login = ({ history }) => {
                     </p>
                   ) : null}
 
-                  <form onSubmit={onSubmit}>
+                  <form onSubmit={onSubmit}  autoComplete="off">
                     <h4 className="mt0 mb3 textColorLogo">Log in</h4>
                     <div className="grey-text">
                       <div className="input-field col s12">
@@ -137,4 +147,4 @@ const Login = ({ history }) => {
   );
 };
  
-export default withRouter (Login);
+export default  Login;

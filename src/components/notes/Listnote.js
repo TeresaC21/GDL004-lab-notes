@@ -1,19 +1,21 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import {AuthContext} from '../auth/Auth';
 
 // Helper firebase
 import { noteFB } from '../firebase/helper-firebaseAuth';
 
 // components
-import Notes from './Notes' // I still dont not it can be notes or notesinput
-import Notesinput from './Notesinput'
+import Notes from './Notes';
+import Notesinput from './Notesinput';
 
 const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components Home
+
+  const { userCurrent } = useContext(AuthContext);
   
   const [notes, setNotes] = useState([]);
 
-  // Function take notes actually and add the new
   const createNote = (note) => {
-    // get note created in component Noteinput that pass like prop //setNotes([...notes, note]);
+    // get note created in Noteinput pass like prop //setNotes([...notes, note]);
   };
 
 // Insert in list all notes of firestore
@@ -24,10 +26,11 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
         noteData.push(({
           id: doc.id,
           title: doc.data().title,
-          description: doc.data().description
+          description: doc.data().description,
+          userId: userCurrent.uid
         })));
       setNotes(noteData);
-      console.log(noteData) 
+      //console.log(noteData) 
   })
  }, []); 
 
@@ -53,6 +56,4 @@ export default Listnote;
 
   /* const data = await noteFB().get();
    setNotes(data.docs.map(doc => ({...doc.data(), id: doc.id}))); */
-  //}
-   //searchData();
-  // return unsubscribe();
+ 

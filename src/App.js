@@ -13,14 +13,14 @@ function App() {
  
   return (
     <AuthProvider>
-    <Router /* basename={window.location.pathname || ''} */>
-     <Switch>
-       <Route exact path="/" component={Login} />
-       <Route exact path="/register" component={Register} />
-       <Route exact path="/home" component={Home} />
-       <Route render={()=> <Notfound />} /> 
-     </Switch>
-    </Router>
+      <Router /* basename={window.location.pathname || ''} */>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <PrivateRoute exact path="/home" component={Home} />
+          <Route render={()=> <Notfound />} /> 
+        </Switch>
+      </Router>
     </AuthProvider>
   );
 }

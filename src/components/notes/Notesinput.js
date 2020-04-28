@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { noteFB } from '../firebase/helper-firebaseAuth';
-
+import {AuthContext} from '../auth/Auth';
 
 const Notesinput = ({ createNote, hideModalAddNote }) => { // 
+
+  const { userCurrent } = useContext(AuthContext);
+
   // State for project
-  const [newNote, setNewNote] = useState({
-    title: "",
-    description: "",
-  });
+  const [newNote, setNewNote] = useState({ title: "", description: "" });
   const [error, setError] = useState(false);
 
   // Read content the input
@@ -29,16 +29,21 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
     }
     // Delete mesage error
     setError(false);
+
     // Create Note in Firestore
-    noteFB().add(newNote)
+    noteFB().add({
+      ...newNote,
+      userId: userCurrent.uid,
+    })
      .then(function(docRef) {
        const noteData = {
          title,
          description,
-         id: docRef.id
+         id: docRef.id,
+         userId: userCurrent.uid
         }
       createNote(noteData);
-      console.log("Document written with ID: ", noteData/*  docRef.id */);
+      //console.log("Document written with ID: ", noteData);
     })
     .catch(function(error) {
       console.error("Error adding document: ", error);

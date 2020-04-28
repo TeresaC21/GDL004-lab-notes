@@ -1,21 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
+// Firebase
 import firebaseIn from "../firebase/firebase";
 import UserAuthFB from '../firebase/UserAuthFB';
 
 export const AuthContext = React.createContext();  //using in PrivateRoute and Navbar useContext
 
+
+
 export const AuthProvider = ({ children }) => {
-    const userFB = UserAuthFB();
+    
+    const [loading, setLoading] = useState(true)
+    const [userCurrent, setUserCurrent] = useState({});
+
+    useEffect(() => {
+        const unsuscribe = firebaseIn.auth().onAuthStateChanged(user =>{
+            setLoading(false)
+            if (user) {
+                setUserCurrent(user)
+            } else {
+                setUserCurrent(null)
+            }
+        });
+        return () => unsuscribe();
+    }, []);
+
     //console.log(userFB); 
    
     return (
-        <AuthContext.Provider
-        value={{
-        firebaseIn,
-        userFB
-        }}
-        >
-            {children}
+        <AuthContext.Provider value={{ userCurrent }}>
+            {loading
+                ? <>Loading...</>
+                : children}
         </AuthContext.Provider>
     );
 };

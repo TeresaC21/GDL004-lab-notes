@@ -12,7 +12,7 @@ const UserAuthFB = () => {
                 setUserCurrent(null)
             }
         });
-        return () =>   unsuscribe();
+        return () => unsuscribe();
     }, []);
     return userCurrent;
 

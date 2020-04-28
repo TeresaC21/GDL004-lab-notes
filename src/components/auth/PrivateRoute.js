@@ -4,13 +4,13 @@ import { AuthContext } from './Auth'; // const que = React.creteContext
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     
-    const {userFB} = useContext(AuthContext);
+    const {userCurrent} = useContext(AuthContext);
     
     return ( 
         <Route
             {...rest}
             render={routeProps => 
-                !!userFB ? (
+                !!userCurrent ? (
                     <RouteComponent {...routeProps} />
                 ) : (
                     <Redirect to={"/"} />

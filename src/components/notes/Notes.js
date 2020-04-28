@@ -1,10 +1,14 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
+import {AuthContext} from '../auth/Auth';
 
 import { noteFB } from '../firebase/helper-firebaseAuth';
 
 const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
- console.log(note);
-  const { id, title, description } = note;
+  
+  const { userCurrent } = useContext(AuthContext);
+  
+  const { id, title, description, userId } = note;
+
    const [currentNote, setCurrentNote] = useState({
      title,
       description
@@ -33,6 +37,7 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
           <div className="card-content textNote">
 
           <span className="card-title textNote">{currentNote.title}</span>
+          <span>{userCurrent ? userCurrent.displayName : null}</span>
             {/* <p>{note.note}</p> */}
              <input value={currentNote.description} onChange={onChangeNew} />  
           </div>

@@ -17,7 +17,7 @@ export const loginFB = async (loginData) => {
 } 
 
 // Sign Out
-export const logout =  async () => {
+export const logOutFB =  async () => {
      return await firebaseIn
     .auth()
     .signOut();
