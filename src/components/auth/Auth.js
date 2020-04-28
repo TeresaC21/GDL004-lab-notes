@@ -2,11 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 // Firebase
 import firebaseIn from "../firebase/firebase";
-import UserAuthFB from '../firebase/UserAuthFB';
 
 export const AuthContext = React.createContext();  //using in PrivateRoute and Navbar useContext
-
-
 
 export const AuthProvider = ({ children }) => {
     
@@ -24,8 +21,6 @@ export const AuthProvider = ({ children }) => {
         });
         return () => unsuscribe();
     }, []);
-
-    //console.log(userFB); 
    
     return (
         <AuthContext.Provider value={{ userCurrent }}>

@@ -22,7 +22,7 @@ const Home = () => {
         showModalAddNote={showModalAddNote}
       />
       <div className="row backgroundColorsHome">
-        <div className="">
+        <div /* className="" */>
           <div className="col s3 hide-on-med-and-down l2 backgroundGray marginCollection">
             <Sidenav
             showModalAddNote={showModalAddNote}

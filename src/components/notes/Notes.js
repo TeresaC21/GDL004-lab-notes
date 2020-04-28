@@ -3,10 +3,10 @@ import {AuthContext} from '../auth/Auth';
 
 import { noteFB } from '../firebase/helper-firebaseAuth';
 
-const Notes = ({ note, showModalAddNote }) => { // note from component Listnote and showModal from Home
+const Notes = ({ note }) => { // note from component Listnote and showModal from Home
   
   const { userCurrent } = useContext(AuthContext);
-  
+
   const { id, title, description, userId } = note;
 
    const [currentNote, setCurrentNote] = useState({
@@ -37,7 +37,7 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
           <div className="card-content textNote">
 
           <span className="card-title textNote">{currentNote.title}</span>
-          <span>{userCurrent ? userCurrent.displayName : null}</span>
+         {/*  <span>{userCurrent ? userCurrent.displayName : null}</span> */}
             {/* <p>{note.note}</p> */}
              <input value={currentNote.description} onChange={onChangeNew} />  
           </div>
@@ -53,65 +53,3 @@ const Notes = ({ note, showModalAddNote }) => { // note from component Listnote 
 };
  
 export default Notes;
-
-
-  // ************** New Notes that add the COMPONENT ListNote ***************
-  // State for project
-/*   const [newNote, setNewNote] = useState({
-    note: ''
-  })
-  const [error, setError] = useState(false)
-  // Read content the input
-  const onChangeNote = e => {
-    setNewNote({
-      ...newNote,
-      [e.target.name] : e.target.value
-    })
-  }
-  const {note} = newNote; // extract name of project
-
-  // When user save note
-  const onSubmitNote = e => {
-    e.preventDefault();
-
-    // validate note
-    if(note.trim() === ''){
-      setError(true);
-      return;
-    }
-    // Delete mesage error
-      setError(false)
-
-    // I THINK ------ ID HERE PUT ID FIREBASE 
-    newNote.id = uuidv4();
-    //console.log(user);
-
-    
-  // Create note
-
-  //add the state
-
-   // reload the form
-
-
-  } */
-
-/* {error ? <p className="card-panel lighten-5 z-depth-1 backgrounOpacity textColorsBar mb3">field are required</p>
-              : null}
-
-            <form 
-            onSubmit={onSubmitNote} 
-            >
-            <input
-            type="text"
-            name="note"
-            value={note}
-            onChange={onChangeNote}
-            />
-            <button
-              className="btn waves-effect waves-light deep-orange"
-              type="submit"
-              name="action"
-              >Save
-            </button> 
-            </form> */
