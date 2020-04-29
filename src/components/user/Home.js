@@ -29,7 +29,6 @@ const Home = () => {
             /> 
           </div>
           <div className="col s9 m8 l10">
-            {/*  <Notesinput /> */}
             <Listnote 
             modalInput={modalInput}
             hideModalAddNote={hideModalAddNote}

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 
 // Helper Firebase
 import { logOutFB } from '../firebase/helper-firebaseAuth';
@@ -19,13 +19,13 @@ const Navbar = ({ showModalAddNote }) => { // prop from component home
 <Fragment>
   <nav>
     <div className="nav-wrapper tc-side">
-      <a href="#!" className="brand-logo textColorLogo"><i className="Medium material-icons ml2 textColorLogo">favorite</i>Note</a>
+      <a href="#!!" className="brand-logo textColorLogo"><i className="Medium material-icons ml2 textColorLogo">favorite</i>Note</a>
       <a href="#!" data-target="menuResponsive" className="sidenav-trigger">
         <i className="material-icons">menu</i>
       </a>
       <ul className="right hide-on-med-and-down">
         <li>
-        {/* <p>{userCurrent ? userCurrent.displayName : null}</p> */}
+         <p>{userCurrent ? userCurrent.displayName : null}</p> 
         </li>
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!" onClick={outUser}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
@@ -34,7 +34,7 @@ const Navbar = ({ showModalAddNote }) => { // prop from component home
   </nav>
                         {/* Here bar responsive */}
   <ul className="sidenav backgroundBurger barWidth" id="menuResponsive"> 
-  <Sidenav onClick={showModalAddNote} />  
+  <Sidenav showModalAddNote={showModalAddNote} />  
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!"><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
   </ul>
