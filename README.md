@@ -25,6 +25,28 @@ Si bien la temática es libre, tendrá que tener ciertas funcionalidades básica
 Para este proyecto deberemos manejar `vistas`. Esto significa que cada sección tendrá su propia URL, la cual indica que `vista` o `componente` será mostrado en pantalla. Para ello necesitaremos investigar acerca de `react-router` y el concepto de `Single Page Application`.
 
 
+## Consideraciones Generales
+
+Este proyecto se debe "resolver" de forma individual.
+
+Trabaja en una historia hasta terminarla antes de pasar a la siguiente. Trabaja hasta la historia que puedas en el tiempo especificado.
+
+![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/log.png)
+
+
+![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/home.png)
+
+La aplicación debe ser un _Single Page App_. Las notas seran realizadas desde una
+_tablet_, pero **no queremos una app nativa**, sino una web app que sea
+**responsive** 
+
+Necesitamos pensar bien en el aspecto UX de quienes van a tomar las notas,
+ el tamaño y aspecto de los botones, la visibilidad del estado actual del
+ pedido, etc.
+
+ La aplicación debe hacer uso de npm-scripts y contar con scripts start, test, build y deploy, que se encarguen de arrancar, correr las pruebas, empaquetar y desplegar la aplicación respectivamente.
+
+
 ## Objetivos de Aprendizaje
 
    El objetivo principal de este proyecto es aprender a construir una _interfaz web_ usando
@@ -65,27 +87,6 @@ Para este proyecto deberemos manejar `vistas`. Esto significa que cada sección 
     - [ ] Nomenclatura / Semántica
     - [ ] Linting
   
-
-## Consideraciones Generales
-
-Este proyecto se debe "resolver" de forma individual.
-
-Trabaja en una historia hasta terminarla antes de pasar a la siguiente. Trabaja hasta la historia que puedas en el tiempo especificado.
-
-![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/log.png)
-
-
-![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/home.png)
-
-La aplicación debe ser un _Single Page App_. Las notas seran realizadas desde una
-_tablet_, pero **no queremos una app nativa**, sino una web app que sea
-**responsive** 
-
-Necesitamos pensar bien en el aspecto UX de quienes van a tomar las notas,
- el tamaño y aspecto de los botones, la visibilidad del estado actual del
- pedido, etc.
-
- La aplicación debe hacer uso de npm-scripts y contar con scripts start, test, build y deploy, que se encarguen de arrancar, correr las pruebas, empaquetar y desplegar la aplicación respectivamente.
 
 
 ### Otros recursos
