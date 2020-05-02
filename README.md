@@ -2,15 +2,6 @@
 
 ## Resumen del Proyecto
 
-No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, notas de alguna reunión o guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, las anotamos en algún mensaje de texto o terminan siendo escritas en la palma de nuestra mano.
-
-Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todas nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crear, editar, elimina y consultar las notas en cualquier momento.
-
-Ella esta enamorada de la idea y quiere llevarla acabo, pero no tiene el tiempo necesario para empezar el proyecto,  planea que sea un proyecto independiente a su trabajo, por ello esta buscando algunas colaboradoras dentro de la comunidad de Laboratoria para que implementen la idea, por lo cual te pedimos que la ayudes.
-
-![Shows CRUD functionalities](https://raw.githubusercontent.com/florenciasilva/lab-notes/master/demo-crud.gif?token=AGJBHNTVAQRWOVF2IGMP6FK5NVFAS)
-
-
 Para este proyecto necesitas crear una Web App con `React`, `Firebase` y `react-router`.
 
 Si bien la temática es libre, tendrá que tener ciertas funcionalidades básicas:
@@ -24,17 +15,24 @@ Si bien la temática es libre, tendrá que tener ciertas funcionalidades básica
 
 Para este proyecto deberemos manejar `vistas`. Esto significa que cada sección tendrá su propia URL, la cual indica que `vista` o `componente` será mostrado en pantalla. Para ello necesitaremos investigar acerca de `react-router` y el concepto de `Single Page Application`.
 
+![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/log.png)
+
+
+![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/home.png)
+
+
+No existe día que no tomemos notas, siempre necesitamos apuntar alguna dirección, número telefónico, notas de alguna reunión o guardar nuestras URLs favoritas para  poder consultarlas más tarde. Muchas veces para esta actividad utilizamos libretas o agendas que terminan siendo olvidadas, las anotamos en algún mensaje de texto o terminan siendo escritas en la palma de nuestra mano.
+
+Hoy en día la mayoría de la población cuenta con algún dispositivo mobile o laptop y además todas nos estamos preocupando por implementar acciones para salvar el medio ambiente, por ello a una Laboratorian se le ocurre la idea de implementar una  web app para tomar notas, que nos permita crear, editar, elimina y consultar las notas en cualquier momento.
+
+Ella esta enamorada de la idea y quiere llevarla acabo, pero no tiene el tiempo necesario para empezar el proyecto,  planea que sea un proyecto independiente a su trabajo, por ello esta buscando algunas colaboradoras dentro de la comunidad de Laboratoria para que implementen la idea, por lo cual te pedimos que la ayudes.
+
 
 ## Consideraciones Generales
 
 Este proyecto se debe "resolver" de forma individual.
 
 Trabaja en una historia hasta terminarla antes de pasar a la siguiente. Trabaja hasta la historia que puedas en el tiempo especificado.
-
-![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/log.png)
-
-
-![alt text](https://github.com/TeresaC21/GDL004-lab-notes/blob/master/src/components/layout/img/home.png)
 
 La aplicación debe ser un _Single Page App_. Las notas seran realizadas desde una
 _tablet_, pero **no queremos una app nativa**, sino una web app que sea
