@@ -37,9 +37,9 @@ const Notes = ({ note }) => { // note from component Listnote and showModal from
           <div className="card-content textNote">
 
           <span className="card-title textNote">{currentNote.title}</span>
-         {/*  <span>{userCurrent ? userCurrent.displayName : null}</span> */}
+           {/* <span>{userCurrent ? userCurrent.displayName : null}</span>  */}
             {/* <p>{note.note}</p> */}
-             <input value={currentNote.description} onChange={onChangeNew} />  
+             <textarea className="textarea" value={currentNote.description} onChange={onChangeNew} />  
           </div>
 
           <div className="card-action">

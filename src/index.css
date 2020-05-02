@@ -88,6 +88,11 @@
 .pd{
   padding: .7rem !important;
 }
+.textarea{
+  font-size: 1rem;
+  height: 8rem;
+  border: 0rem;
+}
 .textPurple{
   color: #631D76 !important;
 }

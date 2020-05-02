@@ -38,7 +38,7 @@ const Listnote = ({ modalInput, hideModalAddNote }) => {  // props of components
     <Fragment>
       {modalInput ? <Notesinput createNote={createNote} hideModalAddNote={hideModalAddNote} /> : null}
       <div>
-        <h5 className="textPurple">LIST NOTES</h5>
+       {/*  <h5 className="textOrange">LIST NOTES</h5> */}
         {notes.map((note) => {
           return (
             <Notes

@@ -13,6 +13,7 @@ const Navbar = ({ showModalAddNote }) => { // prop from component home
 
   const outUser =  async () => {
     await logOutFB();
+    console.log('No user, sing out');
   }
 
   return (
@@ -24,9 +25,8 @@ const Navbar = ({ showModalAddNote }) => { // prop from component home
         <i className="material-icons">menu</i>
       </a>
       <ul className="right hide-on-med-and-down">
-        <li>
-         <p>{userCurrent ? userCurrent.displayName : null}</p> 
-        </li>
+        <li><a href="#!" className="mb1">{userCurrent ? userCurrent.displayName : null}</a></li>
+        
         <li><a href="#!"><i className="material-icons textColorLogo">search</i></a></li>
         <li><a href="#!" onClick={outUser}><i className="material-icons textColorLogo">cancel_presentation</i></a></li>
       </ul>
