@@ -71,7 +71,8 @@ const Notesinput = ({ createNote, hideModalAddNote }) => { //
             <span className="card-title textColorLogo">New Note</span>
             <div className="card-image">
               <a
-                href="#!"
+                role="button"
+                tabIndex="0"
                 className="btn-floating halfway-fab waves-effect waves-light  deep-orange accent-2 mba7"
               >
                 <i className="material-icons">star</i>

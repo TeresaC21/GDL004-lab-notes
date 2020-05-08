@@ -44,8 +44,8 @@ const Notes = ({ note }) => { // note from component Listnote and showModal from
 
           <div className="card-action">
           
-          <a href="#!" className="actionBtn ml70" onClick={onDeleteFB}>delete</a> 
-            <a href="#!" className="actionBtn" onClick={onEditFB}>edit</a> 
+          <a role="button" tabIndex="0" className="actionBtn ml70" onClick={onDeleteFB}>delete</a> 
+            <a role="button" tabIndex="0" className="actionBtn" onClick={onEditFB}>edit</a> 
           </div>
         </div>
       </div>

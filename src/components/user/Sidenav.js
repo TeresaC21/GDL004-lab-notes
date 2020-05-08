@@ -5,7 +5,7 @@ const Sidenav = ({ showModalAddNote }) => { // component Home
     return (
       <aside>
         <ul className="collection mt0 mb0">
-          <a  href="#!" 
+          <a  role="button" tabIndex="0" 
             className="collection-item waves-effect modal-trigger textOrange"
             onClick={showModalAddNote}
             /* Function useState de component Home */
@@ -15,19 +15,22 @@ const Sidenav = ({ showModalAddNote }) => { // component Home
           
           {/*  More bottons of bar */}
           <a
-            href="#!"
+            role="button"
+            tabIndex="0"
             className="collection-item waves-effect modal-trigger textOrange"
           >
             Favorites
           </a>
           <a
-            href="#!"
+            role="button"
+            tabIndex="0"
             className="collection-item waves-effect modal-trigger textOrange"
           >
             Show All
           </a>
           <a
-            href="#!"
+            role="button"
+            tabIndex="0"
             className="collection-item waves-effect modal-trigger textOrange"
           >
             Removed

@@ -13,7 +13,7 @@ function App() {
  
   return (
     <AuthProvider>
-      <Router /* basename={window.location.pathname || ''} */>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
